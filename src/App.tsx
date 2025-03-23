@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import Search from "./components/Search";
 import Spinner from "./components/Spinner";
 import Card from "./components/Card";
