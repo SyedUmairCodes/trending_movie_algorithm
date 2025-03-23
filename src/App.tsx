@@ -4,6 +4,7 @@ import Search from "./components/Search";
 import Spinner from "./components/Spinner";
 import Card from "./components/Card";
 import { useDebounce } from "react-use";
+import { updateSearchCount } from "./appwrite";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_KEY = import.meta.env.VITE_MOVIEDB_API;
@@ -46,6 +47,9 @@ const App = () => {
         return;
       }
 
+      if (query && data.results.length > 0) {
+        await updateSearchCount(query, data.results[0]);
+      }
       setMovieList(data.results || []);
     } catch (error) {
       console.error(error);
